@@ -38,7 +38,7 @@ return [
             'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
             'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
             'commands'            => [
-                //Acme\Project\Commands\MyTelegramBot\BotCommand::class
+                'dostBot'
             ],
         ],
 
@@ -116,7 +116,8 @@ return [
     |
     */
     'commands'                     => [
-        Telegram\Bot\Commands\HelpCommand::class,
+        // Telegram\Bot\Commands\HelpCommand::class,
+        // App\Bot\Commands\HellowCommand::class,
     ],
 
     /*
@@ -178,6 +179,11 @@ return [
                 'Acme\Project\Commands\BotCommand' // Full Path to Command Class.
            ],
         */
+
+        'dostBot' => [
+            App\Bot\Commands\HellowCommand::class,
+            App\Bot\Commands\StartCommamd::class,
+        ]
     ],
 
     /*
