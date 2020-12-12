@@ -15,5 +15,6 @@ class BotUser extends Model
         'first_name',
         'last_name',
         'username',
+        'custom_username',
     ];
 }

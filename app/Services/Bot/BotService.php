@@ -36,15 +36,27 @@ class BotService
     /**
      * Save bot user data to Database
      *
+     * @param string $customUserName
+     *
      * @return void
      */
-    public function saveBotUser()
+    public function saveBotUser($customUserName = null)
     {
-        $user = $this->getBotUser();
-        $user['tlgrm_id'] = $user['id'];
+        $tlgrmUser = $this->getTlgrmUser();
+        $tlgrmUser['tlgrm_id'] = $tlgrmUser['id'];
+        $tlgrmUser['custom_username'] = $customUserName;
 
-        if(empty(BotUser::where('tlgrm_id', $user['tlgrm_id'])->first())) {
-            BotUser::create($user);
+        // Пытаемся извлечь из базы текущего юзера, если такого нет вернется null
+        $botUser = BotUser::where('tlgrm_id', $tlgrmUser['tlgrm_id'])->first();
+
+        // Если юзера нет, создаем нового
+        if(empty($botUser)) {
+            BotUser::create($tlgrmUser);
+        }
+        // Если юзер есть, добавляем ему отправленное пользователем имя
+        if(!empty($botUser) && !$botUser->custom_username) {
+            $botUser->custom_username = $tlgrmUser['custom_username'];
+            $botUser->save();
         }
     }
 
@@ -53,7 +65,7 @@ class BotService
      *
      * @return array
      */
-    public function getBotUser()
+    public function getTlgrmUser()
     {
         return self::$updates['message']['from'];
     }
