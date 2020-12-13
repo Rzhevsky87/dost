@@ -58,6 +58,13 @@ class BotService
             $botUser->custom_username = $tlgrmUser['custom_username'];
             $botUser->save();
         }
+        if(!empty($botUser) && $botUser->custom_username) {
+            $response = Telegram::sendMessage([
+                'chat_id' => self::$updates['message']['chat']['id'],
+                'text' => "Привет $botUser->custom_username !"
+              ]);
+            $messageId = $response->getMessageId();
+        }
     }
 
     /**
