@@ -42,6 +42,11 @@ return [
             'visibility' => 'public',
         ],
 
+        'snapshots' => [
+            'driver' => 'local',
+            'root' => storage_path('snapshots')
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
