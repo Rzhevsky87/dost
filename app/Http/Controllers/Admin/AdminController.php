@@ -8,10 +8,20 @@ use App\Models\BotUser;
 
 class AdminController extends Controller
 {
-    public function list(Request $request)
+    public function list()
     {
         $botUsers = BotUser::all();
 
-        return view('admin.user-list', ['botUsers' => $botUsers]);
+        return view('admin.user-list', ['botUsers' => $botUsers, 'i' => 1]);
+    }
+
+    public function show(BotUser $botUser)
+    {
+        return view('admin.user-show', ['botUser' => $botUser]);
+    }
+
+    public function block(BotUser $botUser)
+    {
+        return __METHOD__;
     }
 }

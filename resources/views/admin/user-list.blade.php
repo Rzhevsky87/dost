@@ -11,9 +11,11 @@
                 <ul class="botUsers-list">
                     @foreach ($botUsers as $botUser)
                         <li class="botUsers-list-item">
-                            <p class="botUsers-list-raw botUsers-list-id">{{ $botUser->id }}</p>
+                            <p class="botUsers-list-raw botUsers-list-id">{{ $i++ }}</p>
                             <p class="botUsers-list-raw botUsers-list-bot">{{ $botUser->is_bot ? 'бот' : 'человек'}}</p>
-                            <p class="botUsers-list-raw botUsers-list-name">{{ $botUser->first_name }}</p>
+                            <a class="botUsers-list-raw botUsers-list-name botUsers-list-link" href="{{ route('admin.show', $botUser->id) }}">
+                                {{ $botUser->first_name }}
+                            </a>
                         </li>
                     @endforeach
                 </ul>
