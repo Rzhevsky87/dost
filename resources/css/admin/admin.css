@@ -1,0 +1,29 @@
+.botUsers-list {
+    display: flex;
+    flex-flow: column;
+    padding-left: 1%;
+    padding-right: 1%;
+    color: blueviolet;
+}
+
+.botUsers-list-item {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.botUsers-list-raw {
+    text-align: left;
+}
+
+.botUsers-list-id {
+    width: 15%;
+}
+
+.botUsers-list-bot {
+    width: 5%;
+}
+
+.botUsers-list-name {
+    width: 30%;
+}
