@@ -15,7 +15,11 @@
                     <p>Зарегистрировался - {{ $botUser->created_at }}</p>
 
                     <a class="botUsers-list-link" href="{{ route('admin.block', $botUser->id) }}">
-                        <b>Блокировать</b>
+                        @if(!$botUser->is_blocked)
+                            <b>Блокировать</b>
+                        @else
+                            <b class="bot-user-unblock-btn">Разблокировать</b>
+                        @endif
                     </a>
                 </div>
             </div>

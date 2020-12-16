@@ -39,3 +39,33 @@
     display: flex;
     flex-flow: column;
 }
+
+.bot-user-unblock-btn {
+    color: peru;
+}
+
+
+.admin_create-mailing_from {
+    display: flex;
+    flex-flow: column;
+}
+
+.mailing_from-text {
+    min-width: 300px;
+    max-width: 600px;
+    border: 1px solid grey;
+}
+
+.mailing_from-name {
+    min-width: 300px;
+    max-width: 600px;
+    border: 1px solid grey;
+}
+
+.mailing_from-date {
+    width: 250px;
+}
+
+.mailing_from-submit-btn {
+    width: 120px;
+}

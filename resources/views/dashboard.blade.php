@@ -7,9 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                {{-- <x-jet-welcome /> --}}
-                <a href="{{ route('admin') }}">Список пользователей</a>
+            <div class="flex flex-col bg-white overflow-hidden shadow-xl sm:rounded-lg pl-5 pb-5 pt-5 space-y-10">
+                <a class="botUsers-list-link" href="{{ route('admin') }}">{{ __('admin.userList') }}</a>
+                <a class="botUsers-list-link" href="{{ route('admin.mailing') }}">{{ __('admin.mailing.title') }}</a>
             </div>
         </div>
     </div>

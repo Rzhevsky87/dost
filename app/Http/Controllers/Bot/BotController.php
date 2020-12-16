@@ -36,8 +36,16 @@ class BotController extends Controller
         $message = $inputData['message']['text'];
 
         $botUser = BotUser::where('tlgrm_id', $inputData['message']['from']['id'])->first();
-
         $myBot = BotUser::find(29);
+        if($botUser->id === $myBot->id) {
+            $botUser = BotUser::where('tlgrm_id', $inputData['from']['id'])->first();
+        }
+
+        if($botUser->is_blocked) {
+            Log::debug("$botUser->id, заблокирован");
+            return;
+        }
+
 
         // Обработка команд (не инлайн)
         if($message =='Ввести имя') {
