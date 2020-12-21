@@ -3,13 +3,14 @@
 namespace App\Services\Bot;
 
 use Telegram;
-// use App\Models\User;
+use Telegram\Bot\FileUpload\InputFile;
 use App\Models\BotUser;
 use App\Models\Mailing;
 use Carbon\Carbon;
 use App\Services\Bot\BotService;
 // Uncomment for debug
-use Illuminate\Support\Facades\Log;
+// use Illuminate\Support\Facades\Log;
+
 
 class SendTlgrmMailing
 {
@@ -26,16 +27,17 @@ class SendTlgrmMailing
 
 
         if(!empty($mailing)) {
-            Log::debug([$mailing]);
+            // Uncomment for debug
+            // Log::debug([$mailing]);
 
             $users = BotUser::where('is_blocked', '!=', true)->get();
 
             foreach($users as $user) {
-                $response = Telegram::sendMessage([
+                // Реализована отправка сообщения одновременно с текстом через подпись
+                $response = Telegram::sendPhoto([
                     'chat_id' => $user->chat_id,
-                    'text' => $mailing->text,
-                    // 'photo' => "public/mailing/$mailing->image",
-                    // 'caption' => 'Some caption'
+                    'photo' => InputFile::create(storage_path('app/public/mailing/'.$mailing->image)),
+                    'caption' => $mailing->text
                 ]);
                 $messageId = $response->getMessageId();
             }
