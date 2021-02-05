@@ -10,7 +10,7 @@ use Telegram;
 /**
  * Class HelpCommand.
  */
-class StartCommamd extends Command
+class StartCommand extends Command
 {
     /**
      * @var string Command Name

@@ -182,7 +182,7 @@ return [
 
         'dostBot' => [
             App\Bot\Commands\HellowCommand::class,
-            App\Bot\Commands\StartCommamd::class,
+            App\Bot\Commands\StartCommand::class,
         ]
     ],
 
