@@ -30,6 +30,8 @@ class SendTlgrmMailing
             // Uncomment for debug
             // Log::debug([$mailing]);
 
+            // Надо добавить проверку каждого клиента на корректность (заполненно поле chat_id)
+
             $users = BotUser::where('is_blocked', '!=', true)->get();
 
             foreach($users as $user) {
